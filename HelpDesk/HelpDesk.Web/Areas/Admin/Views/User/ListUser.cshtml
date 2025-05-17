@@ -1,0 +1,61 @@
+﻿@model HelpDesk.Shared.ViewModel.UserListViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@if (Model.Message is not null)
+{
+    <div class="alert alert-success" role="alert">
+        @Model.Message
+    </div>
+}
+
+@if (Model.Users is not null)
+{
+    <form method="post">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>Acción</td>
+                    <td>Email</td>
+					<td>Rol</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Users)
+                {
+                    <tr>
+                        <td>
+                            @if (!user.Roles.Contains("Admin"))
+                            {
+                                <button class="btn btn-primary me-2" asp-action="MakeAdmin" asp-area="Admin" asp-controller="User" asp-route-email="@user.Email">
+                                    Hacer Admin
+                                </button>
+                            }
+                            else
+                            {
+                                <button class="btn btn-secondary me-2"
+                                        asp-action="RemoveAdmin"
+                                        asp-area="Admin"
+                                        asp-controller="User"
+                                        asp-route-email="@user.Email">
+                                    Remover Admin
+                                </button>
+                            }
+                            
+                        </td>
+                        <td>
+                            @user.Email
+                        </td>
+						<td>
+							@string.Join(", ", user.Roles)
+						</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+}
+else
+{
+    <p>No hay usuarios para mostrar</p>
+}

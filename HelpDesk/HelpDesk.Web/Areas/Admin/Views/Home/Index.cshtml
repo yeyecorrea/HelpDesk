@@ -1,0 +1,21 @@
+﻿@*
+
+*@
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="row justify-content-center align-items-center vh-70">
+                <p class="accordion-body text-lg-center">
+                    Hola Admin bienvenido al panel de control aca podras ver la lista de usuarios
+                    y poder ver y asignar permisos y roles
+                </p>
+                
+            </div>
+            <a asp-action="ListUser" asp-area="Admin" asp-controller="User" class="btn btn-primary mx-2">Ver usuarios</a>
+        </div>
+    </div>
+</div>

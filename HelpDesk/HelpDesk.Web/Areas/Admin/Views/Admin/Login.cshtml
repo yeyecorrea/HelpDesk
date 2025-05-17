@@ -1,0 +1,36 @@
+﻿@model HelpDesk.Shared.Dtos.LoginDto
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center align-items-center vh-70">
+        <div class="form-container">
+            <h2 class="form-title">Registro</h2>
+            <form asp-area="Admin" asp-controller="Admin" asp-action="Login" method="post">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input asp-for="Email" type="email" class="form-control" required>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input asp-for="PassWord" type="password" class="form-control" required>
+                    <span asp-validation-for="PassWord" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-submit">Registrarse</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!--Renderisamos scripts en layaut secccion scripts -->
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"></partial>
+
+}
+
